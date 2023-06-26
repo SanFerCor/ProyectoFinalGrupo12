@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "product-api",
+      "composeLaunchUrl": "{Scheme}://localhost:8547",
+      "serviceActions": {
+        "product-api": "StartDebugging",
+        "eshop-app": "StartWithoutDebugging",
+        "mssql-db": "StartWithoutDebugging"
+      }
+    }
+  }
+}

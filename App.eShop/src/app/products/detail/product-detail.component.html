@@ -1,5 +1,5 @@
-<form [formGroup]="form">
-  <h1 mat-dialog-title>Nuevo Producto</h1>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <h1 mat-dialog-title>{{isNew?'Nuevo':'Editar'}} Producto</h1>
   <mat-dialog-content>
     <div class="flex flex-col space-y-3">
       <div class="flex flex-row">

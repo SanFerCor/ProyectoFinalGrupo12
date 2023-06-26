@@ -28,7 +28,7 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Products
             .Where(x => (string.IsNullOrEmpty(search) || x.Code.Contains(search) || x.Name.Contains(search)) &&
-                        (string.IsNullOrEmpty(categoryCode) || x.CategoryCode == categoryCode) && !x.IsDeleted)
+                        (string.IsNullOrEmpty(categoryCode) || x.CategoryCode == categoryCode))
             .ToListAsync(cancellationToken);
     }
 
@@ -36,7 +36,8 @@ public class ProductRepository : IProductRepository
     {
         var result = await _context.Products
             .Where(x => x.Code == code)
-            .ExecuteUpdateAsync(setters => setters.SetProperty(b => b.IsDeleted, true));
+            .ExecuteDeleteAsync();    
+        //.ExecuteUpdateAsync(setters => setters.SetProperty(b => b.IsDeleted, true));
         return result > 0;
     }
 

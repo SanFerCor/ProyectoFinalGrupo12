@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ProductListComponent } from './list/product-list.component';
 import { ProductService } from '../shared/services/product.service';
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {

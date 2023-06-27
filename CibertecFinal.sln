@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "App.eShop", "App.eShop\App.eShop.esproj", "{28EA6688-E4D9-48D0-86C8-AAEA81402CAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Catalogs", "Api.Catalogs\Api.Catalogs.csproj", "{9D1908AE-DBE9-43F4-A14A-10D54FA7308F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Catalogs", "Api.Catalogs\Api.Catalogs.csproj", "{9D1908AE-DBE9-43F4-A14A-10D54FA7308F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Brands", "Api.Brands\Api.Brands.csproj", "{04B11496-F69A-44C8-9977-68FEE05B2868}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{9D1908AE-DBE9-43F4-A14A-10D54FA7308F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D1908AE-DBE9-43F4-A14A-10D54FA7308F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D1908AE-DBE9-43F4-A14A-10D54FA7308F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B11496-F69A-44C8-9977-68FEE05B2868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B11496-F69A-44C8-9977-68FEE05B2868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B11496-F69A-44C8-9977-68FEE05B2868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B11496-F69A-44C8-9977-68FEE05B2868}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

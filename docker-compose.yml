@@ -22,6 +22,8 @@ services:
     environment:
       NG_APP_PRODUCTS_URL: http://localhost:5001
       NG_APP_CATEGORIES_URL: http://localhost:5002
+      NG_APP_BRANDS_URL: http://localhost:5003
+
     volumes:
       - ./App.eShop:/app
     ports:
@@ -30,6 +32,7 @@ services:
     depends_on:
       - product-api
       - category-api
+      - brand-api
 
   category-api:
     image: ciberfinal-category.api:latest
@@ -45,6 +48,20 @@ services:
       - mssql-db
 
   
+  brand-api:
+    image: ciberfinal-brand.api:latest
+    container_name: ${BRAND_API_HOST}
+    build:
+      context: ./Api.Brands
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Server=${MSSQL_HOST};Database=${MSSQL_BRAN_DATABASE};User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True;
+    ports:
+      - "5003:80"
+    depends_on:
+      - mssql-db
+
+
   mssql-db:
     image: mcr.microsoft.com/mssql/server:2017-latest
     container_name: ${MSSQL_HOST}

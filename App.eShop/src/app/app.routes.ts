@@ -13,4 +13,10 @@ export const routes: Route[] = [
       import('./categories/categories.module').then((m) => m.CategoriesModule),
   },
 
+  {
+    path: 'marcas',
+    loadChildren: () =>
+      import('./marca/marcas.module').then((m) => m.MarcasModule),
+  },
+
 ];

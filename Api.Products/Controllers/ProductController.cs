@@ -26,7 +26,7 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> PutAsync(string code, [FromBody] Product product, CancellationToken cancellationToken = default)
     {
         var result = await _productRepository.UpdateAsync(code, product.Name, product.Price, product.UomCode,
-            product.Stock, product.CategoryCode);
+            product.Stock, product.CategoryCode, product.ImagePath);
         return Ok(new { result });
     }
 

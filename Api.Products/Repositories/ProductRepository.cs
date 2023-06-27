@@ -41,7 +41,8 @@ public class ProductRepository : IProductRepository
         return result > 0;
     }
 
-    public async Task<bool> UpdateAsync(string code, string name, decimal price, string uomCode, decimal stock, string categoryCode)
+    public async Task<bool> UpdateAsync(string code, string name, decimal price, string uomCode, decimal stock,
+        string categoryCode, string imagePath)
     {
         var result = await _context.Products
             .Where(x => x.Code == code)
@@ -49,6 +50,7 @@ public class ProductRepository : IProductRepository
                 setters
                     .SetProperty(b => b.Name, name)
                     .SetProperty(b => b.Price, price)
+                    .SetProperty(b => b.ImagePath, imagePath)
                     .SetProperty(b => b.UomCode, uomCode)
                     .SetProperty(b => b.CategoryCode, categoryCode)
                     .SetProperty(b => b.Stock, stock));

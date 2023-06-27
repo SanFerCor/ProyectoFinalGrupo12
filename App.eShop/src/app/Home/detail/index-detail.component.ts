@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { tap } from "rxjs";
 import { Product } from "../../shared/models/product.model";
 import { ProductService } from "../../shared/services/product.service";
@@ -10,6 +11,7 @@ import { ProductService } from "../../shared/services/product.service";
 })
 export class IndexDetailComponent implements OnInit {
   products: Product[];
+  searchControl = new FormControl("");
 
   constructor(private readonly productSvc: ProductService) {
 
@@ -19,6 +21,14 @@ export class IndexDetailComponent implements OnInit {
     this.productSvc.list().pipe(tap((products) => {
       this.products = products;
     })).subscribe();
+
+    this.searchControl.valueChanges.pipe(
+      tap((value) => {
+        this.productSvc.list(value).pipe(tap((products) => {
+          this.products = products;
+        })).subscribe();
+      })
+    ).subscribe();
   }
 
 }

@@ -1,41 +1,51 @@
 <header>
   <h1>MiniMarket Pepito</h1>
 </header>
-<section class="contenedor flex flex-row space-x-5">
-  <!--carrito de compras-->
-  <div class="grid grid-cols-4 gap-4">
-    <div class="contenedor-items" *ngFor="let product of products">
-      <div class="item h-full">
-        <span>{{product.name}}</span>
-        <img [src]="product.imagePath" alt="" class="img-item">
-        <span class="precio-Item">S/. {{product.price}} </span>
-        <button class="boton-item">Agregar al Carrito</button>
-      </div>
-    </div>
+<section class="contenedor flex flex-col space-y-3">
+  <div class="w-full">
+    <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <input matInput [formControl]="searchControl"/>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
   </div>
-  <div class="carrito">
-    <div class="header-carrito">
-      <h2>Tu Carrito</h2>
-    </div>
-
-    <div class="carrito-items">
-      <div class="carrito-item">
-        <img src="imgs/lecheIdeal.webp" alt="" width="80px">
-        <div class="carrito-item-detalles">
-          <span class="carrito-item-titulo">Box Engasse</span>
-          <div class="selector-cantidad">
-            <i class="fa-solid fa-minus restar-cantidad"></i>
-            <input type="text" value="1" class="carrito-item-cantidad" disabled>
-            <i class="fa-solid fa-plus sumar-cantidad"></i>
-          </div>
-          <span class="carrito-item-precio">S/15</span>
+  <div class="flex flex-row space-x-5">
+    <!--carrito de compras-->
+    <div class="grid grid-cols-4 gap-4">
+      <div class="contenedor-items" *ngFor="let product of products">
+        <div class="item h-full">
+          <span>{{product.name}}</span>
+          <img [src]="product.imagePath" alt="" class="img-item">
+          <span class="precio-Item">S/. {{product.price}} </span>
+          <button class="boton-item">Agregar al Carrito</button>
         </div>
-        <span class="btn-eliminar">
-          <i class="fa-solid fa-plus sumar-cantidad"></i>
-        </span>
+      </div>
+    </div>
+    <div class="carrito">
+      <div class="header-carrito">
+        <h2>Tu Carrito</h2>
       </div>
 
+      <div class="carrito-items">
+        <div class="carrito-item">
+          <img src="imgs/lecheIdeal.webp" alt="" width="80px">
+          <div class="carrito-item-detalles">
+            <span class="carrito-item-titulo">Box Engasse</span>
+            <div class="selector-cantidad">
+              <i class="fa-solid fa-minus restar-cantidad"></i>
+              <input type="text" value="1" class="carrito-item-cantidad" disabled>
+              <i class="fa-solid fa-plus sumar-cantidad"></i>
+            </div>
+            <span class="carrito-item-precio">S/15</span>
+          </div>
+          <span class="btn-eliminar">
+            <i class="fa-solid fa-plus sumar-cantidad"></i>
+          </span>
+        </div>
+
+      </div>
     </div>
   </div>
+
 
 </section>

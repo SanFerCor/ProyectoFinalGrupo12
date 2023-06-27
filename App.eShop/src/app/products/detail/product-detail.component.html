@@ -44,7 +44,15 @@
           <mat-error *ngIf="form.get('categoryCode').hasError('required')">Este campo es requerido</mat-error>
         </mat-form-field>
       </div>
-
+      <input #fileUpload [hidden]="true" type="file" (change)="onFileUpload($event)" />
+      <div class="flex flex-flex items-end space-x-2">
+        <mat-form-field class="flex-grow">
+          <mat-label>Imagen</mat-label>
+          <input readonly="readonly" matInput formControlName="imageFileName" />
+          <button matSuffix mat-icon-button type="button" color="primary" (click)="fileUpload.click()"><mat-icon>cloud_upload</mat-icon></button>
+        </mat-form-field>
+        <img [src]="form.get('imagePath').value" class="w-32" />
+      </div>
     </div>
   </mat-dialog-content>
   <mat-divider></mat-divider>

@@ -112,11 +112,20 @@ export class ProductDetailComponent implements OnInit {
       stock: [null, [Validators.required, Validators.min(0)]],
       uomCode: [null, Validators.required],
       categoryCode: [null, Validators.required],
+      imagePath: [null],
+      imageFileName: [null]
     });
 
     if (!this.isNew) {
       this.form.patchValue(this.data.product);
     }
+  }
+
+  async onFileUpload($event: any) {
+    const file = $event.target.files[0] as File;
+    const base64 = await this.blobToBase64DataURL(file);
+    this.form.controls['imageFileName'].setValue(file.name);
+    this.form.controls['imagePath'].setValue(base64);
   }
 
 
@@ -154,4 +163,14 @@ export class ProductDetailComponent implements OnInit {
       )
       .subscribe();
   }
+
+  private blobToBase64DataURL(blob) {
+    return new Promise<string>(
+      resolve => {
+        const reader = new FileReader();
+        reader.onload = () => resolve((reader.result as string));
+        reader.readAsDataURL(blob);
+      }
+    )
+  };
 }

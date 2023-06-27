@@ -21,6 +21,7 @@ services:
       context: ./App.eShop
     environment:
       NG_APP_PRODUCTS_URL: http://localhost:5001
+      NG_APP_CATEGORIES_URL: http://localhost:5002
     volumes:
       - ./App.eShop:/app
     ports:
@@ -28,6 +29,21 @@ services:
       - '49153:49153'
     depends_on:
       - product-api
+      - category-api
+
+  category-api:
+    image: ciberfinal-category.api:latest
+    container_name: ${CATEGORY_API_HOST}
+    build:
+      context: ./Api.Catalogs
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Server=${MSSQL_HOST};Database=${MSSQL_CAT_DATABASE};User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True;
+    ports:
+      - "5002:80"
+    depends_on:
+      - mssql-db
+
   
   mssql-db:
     image: mcr.microsoft.com/mssql/server:2017-latest

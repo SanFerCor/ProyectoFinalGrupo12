@@ -5,7 +5,7 @@
   <div class="w-full">
     <mat-form-field class="w-full" appearance="outline">
       <mat-label>Buscar</mat-label>
-      <input matInput [formControl]="searchControl"/>
+      <input matInput [formControl]="searchControl" />
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
   </div>
@@ -17,7 +17,7 @@
           <span>{{product.name}}</span>
           <img [src]="product.imagePath" alt="" class="img-item">
           <span class="precio-Item">S/. {{product.price}} </span>
-          <button class="boton-item">Agregar al Carrito</button>
+          <button (click)="addProduct(product)" class="boton-item">Agregar al Carrito</button>
         </div>
       </div>
     </div>
@@ -27,22 +27,22 @@
       </div>
 
       <div class="carrito-items">
-        <div class="carrito-item">
-          <img src="imgs/lecheIdeal.webp" alt="" width="80px">
-          <div class="carrito-item-detalles">
-            <span class="carrito-item-titulo">Box Engasse</span>
+        <div class="carrito-item flex flex-row" *ngFor="let item of basket">
+          <img [src]="item.product.imagePath" alt="" width="80px">
+          <div class="carrito-item-detalles flex-grow">
+            <span class="carrito-item-titulo">{{item.product.name}}</span>
             <div class="selector-cantidad">
               <i class="fa-solid fa-minus restar-cantidad"></i>
-              <input type="text" value="1" class="carrito-item-cantidad" disabled>
+              <span class="font-semibold text-lg">{{item.quantity}}</span>
               <i class="fa-solid fa-plus sumar-cantidad"></i>
             </div>
-            <span class="carrito-item-precio">S/15</span>
+            <span class="carrito-item-precio font-semibold text-lg">S/.{{item.price}}</span>
           </div>
-          <span class="btn-eliminar">
-            <i class="fa-solid fa-plus sumar-cantidad"></i>
-          </span>
+          <button (click)="removeProduct(item)" class="color-red-400" type="button"><mat-icon>delete</mat-icon></button>
         </div>
-
+        <div class="text-xl text-center py-5">
+          <span class="font-semibold">Total a Pagar: S/. {{totalAmount}}</span>
+        </div>
       </div>
     </div>
   </div>

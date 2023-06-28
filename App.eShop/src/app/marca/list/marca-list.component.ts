@@ -24,7 +24,7 @@ export class MarcaListComponent implements OnInit, OnDestroy {
   datasource = new MatTableDataSource<Marca>([]);
   displayedColumns = [
     'name',
-    'code',
+    'estado',
     'actions',
   ];
 

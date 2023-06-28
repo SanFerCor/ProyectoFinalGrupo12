@@ -10,3 +10,12 @@ html, body {
   width: 100%;
 
 }
+
+
+.menu {
+  background-color: blueviolet;
+}
+.menu > div {
+  color: white;
+  @apply flex flex-row justify-center items-center text-lg w-32 cursor-pointer;
+}

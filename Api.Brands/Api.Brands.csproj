@@ -5,7 +5,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\ciberfinal</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +19,5 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="..\.dockerignore">
-      <DependentUpon>Dockerfile</DependentUpon>
-    </None>
-  </ItemGroup>
 
 </Project>

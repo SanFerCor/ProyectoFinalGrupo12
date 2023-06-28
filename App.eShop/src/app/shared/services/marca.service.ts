@@ -4,7 +4,7 @@ import { Marca } from '../models/marca.model';
 
 @Injectable()
 export class MarcaService {
-  private baseUrl = import.meta.env['NG_APP_MARCAS_URL'];
+  private baseUrl = import.meta.env['NG_APP_BRANDS_URL'];
 
   constructor(private readonly httpClient: HttpClient) {}
 
@@ -17,7 +17,7 @@ export class MarcaService {
   }
 
   list(search?: string, categoryCode?: string) {
-    return this.httpClient.get<Marca[]>(`${this.baseUrl}/api/marcas?search=${search??''}}`);
+    return this.httpClient.get<Marca[]>(`${this.baseUrl}/api/marcas?search=${search??''}`);
   }
 
   delete(code: string) {

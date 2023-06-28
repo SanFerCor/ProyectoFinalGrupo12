@@ -9,7 +9,9 @@
       "serviceActions": {
         "product-api": "StartDebugging",
         "eshop-app": "StartWithoutDebugging",
-        "mssql-db": "StartWithoutDebugging"
+        "mssql-db": "StartWithoutDebugging",
+        "brand-api": "StartDebugging",
+        "category-api": "StartDebugging"
       }
     }
   }

@@ -39,7 +39,7 @@
         <mat-form-field class="w-1/2">
           <mat-label>Categoría</mat-label>
           <mat-select formControlName="categoryCode">
-            <mat-option [value]="category.value" *ngFor="let category of categories">{{category.text}}</mat-option>
+            <mat-option [value]="category.code" *ngFor="let category of categories$ | async">{{category.name}}</mat-option>
           </mat-select>
           <mat-error *ngIf="form.get('categoryCode').hasError('required')">Este campo es requerido</mat-error>
         </mat-form-field>

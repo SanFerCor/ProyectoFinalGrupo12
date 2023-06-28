@@ -15,10 +15,11 @@ import { ProductService } from '../shared/services/product.service';
 import { RouterModule } from '@angular/router';
 import { ProductDetailComponent } from './detail/product-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CategoryService } from '../shared/services/category.service';
 
 @NgModule({
   declarations: [ProductListComponent, ProductDetailComponent],
-  providers: [ProductService],
+  providers: [ProductService, CategoryService],
   imports: [
     CommonModule,
     MatTableModule,

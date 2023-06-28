@@ -3,35 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subject, catchError, of, tap } from 'rxjs';
+import { Category } from 'src/app/shared/models/category.model';
+import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   templateUrl: './product-detail.component.html',
 })
 export class ProductDetailComponent implements OnInit {
-  categories = [
-    {
-      text: 'Abarrotes',
-      value: 'AB',
-    },
-    {
-      text: 'Panaderia y Pasteleria',
-      value: 'PA',
-    },
-    {
-      text: 'Bebidas',
-      value: 'BE',
-    },
-    {
-      text: 'Cuidado Personal y Salud',
-      value: 'CP',
-    },
-    {
-      text: 'Lacteos y huevos',
-      value: 'LA',
-    },
-  ];
-
   uoms = [
     {
       code: 'KGM',
@@ -94,10 +73,13 @@ export class ProductDetailComponent implements OnInit {
 
   form: FormGroup;
 
+  categories$: Observable<Category[]>;
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly productSvc: ProductService,
     private readonly snackBar: MatSnackBar,
+    private readonly categorySvc: CategoryService,
     private readonly dialogRef: MatDialogRef<ProductDetailComponent>,
     @Inject(MAT_DIALOG_DATA) private readonly data: any
   ) {}
@@ -113,12 +95,14 @@ export class ProductDetailComponent implements OnInit {
       uomCode: [null, Validators.required],
       categoryCode: [null, Validators.required],
       imagePath: [null],
-      imageFileName: [null]
+      imageFileName: [null],
     });
 
     if (!this.isNew) {
       this.form.patchValue(this.data.product);
     }
+
+    this.categories$ = this.categorySvc.list();
   }
 
   async onFileUpload($event: any) {
@@ -127,7 +111,6 @@ export class ProductDetailComponent implements OnInit {
     this.form.controls['imageFileName'].setValue(file.name);
     this.form.controls['imagePath'].setValue(base64);
   }
-
 
   save() {
     if (this.form.invalid) {
@@ -165,12 +148,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   private blobToBase64DataURL(blob) {
-    return new Promise<string>(
-      resolve => {
-        const reader = new FileReader();
-        reader.onload = () => resolve((reader.result as string));
-        reader.readAsDataURL(blob);
-      }
-    )
-  };
+    return new Promise<string>((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.readAsDataURL(blob);
+    });
+  }
 }

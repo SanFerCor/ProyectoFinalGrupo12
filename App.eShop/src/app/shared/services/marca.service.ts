@@ -9,18 +9,18 @@ export class MarcaService {
   constructor(private readonly httpClient: HttpClient) {}
 
   add(marca: Marca){
-    return this.httpClient.post(`${this.baseUrl}/api/marcas`, marca);
+    return this.httpClient.post(`${this.baseUrl}/api/brands`, marca);
   }
 
   update(marca: Marca){
-    return this.httpClient.put(`${this.baseUrl}/api/marcas/${marca.name}`, marca);
+    return this.httpClient.put(`${this.baseUrl}/api/brands/${marca.name}`, marca);
   }
 
   list(search?: string, categoryCode?: string) {
-    return this.httpClient.get<Marca[]>(`${this.baseUrl}/api/marcas?search=${search??''}`);
+    return this.httpClient.get<Marca[]>(`${this.baseUrl}/api/brands?search=${search??''}`);
   }
 
   delete(code: string) {
-    return this.httpClient.delete(`${this.baseUrl}/api/marcas/${code}`)
+    return this.httpClient.delete(`${this.baseUrl}/api/brands/${code}`)
   }
 }

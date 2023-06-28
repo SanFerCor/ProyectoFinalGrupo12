@@ -21,6 +21,6 @@ export class CategoryService {
   }
 
   delete(code: string) {
-    return this.httpClient.delete(`${this.baseUrl}/api/category/${code}`)
+    return this.httpClient.delete(`${this.baseUrl}/api/categories/${code}`)
   }
 }

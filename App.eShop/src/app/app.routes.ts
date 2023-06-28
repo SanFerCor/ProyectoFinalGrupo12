@@ -4,7 +4,7 @@ export const routes: Route[] = [
   {
     path: '',
     loadChildren: () =>
-      import('./home/index.module').then((m) => m.IndexModule),
+      import('./Home/index.module').then((m) => m.IndexModule),
   },
   {
     path: 'products',
